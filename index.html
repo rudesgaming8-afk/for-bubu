@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>For Bubu 💖</title>
+<title>For Bubu 🌙</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Poppins&display=swap');
@@ -13,50 +13,21 @@
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
-  background:#FFF3F6;
+  background:#FFF1F5;
   color:#5A3B2E;
   overflow-x:hidden;
 }
 
-/* ===== INTRO OVERLAY ===== */
-#intro{
+/* heart background */
+body::before{
+  content:"💗 💕 💖 💘 💞";
   position:fixed;
   inset:0;
-  background:#fff0f5;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
+  font-size:4rem;
+  opacity:.06;
+  pointer-events:none;
 }
 
-#introText{
-  font-family:'Patrick Hand',cursive;
-  font-size:3rem;
-  color:#FF6B81;
-  opacity:0;
-  animation:introText 4s ease forwards;
-}
-
-@keyframes introText{
-  0%{opacity:0;transform:scale(.8)}
-  25%{opacity:1;transform:scale(1)}
-  60%{opacity:1}
-  100%{opacity:0;transform:scale(1.1)}
-}
-
-/* ===== HEART BACKGROUND ===== */
-.hearts span{
-  position:fixed;
-  bottom:-20px;
-  font-size:18px;
-  animation:floatUp linear infinite;
-  opacity:.6;
-}
-@keyframes floatUp{
-  to{transform:translateY(-120vh);opacity:0}
-}
-
-/* ===== LAYOUT ===== */
 main{
   max-width:480px;
   margin:auto;
@@ -65,7 +36,10 @@ main{
   z-index:2;
 }
 
-section{display:none;animation:fadeIn .8s ease forwards}
+section{
+  display:none;
+  animation:fadeIn .8s ease forwards;
+}
 section.active{display:block}
 .center{text-align:center}
 
@@ -74,31 +48,35 @@ button{
   border:none;
   border-radius:40px;
   color:#fff;
-  padding:12px 30px;
+  padding:12px 28px;
   font-size:1.05rem;
   cursor:pointer;
   box-shadow:0 6px 14px rgba(255,107,129,.45);
 }
 button.secondary{background:#69A197}
 
-.card{
-  background:#FFE6EC;
-  border-radius:18px;
+.cardBox{
+  background:#FFE4EC;
+  border-radius:20px;
   padding:16px;
   margin:18px 0;
 }
 
-h1,h2,h3,h4{font-family:'Patrick Hand',cursive}
+/* landing */
+#landing h1{
+  font-family:'Patrick Hand',cursive;
+  font-size:2.6rem;
+}
 
-/* ===== SMILEY ===== */
+/* smiley */
 .smiley{
   font-size:3rem;
   opacity:0;
   transform:scale(0);
 }
-.smiley.show{animation:popIn 1s ease forwards}
+.smiley.show{animation:popIn 1s forwards}
 
-/* ===== CHOICE ===== */
+/* mood */
 .choiceBtn{
   background:#FFDDE1;
   border-radius:14px;
@@ -115,14 +93,12 @@ h1,h2,h3,h4{font-family:'Patrick Hand',cursive}
   margin:14px 0;
 }
 
-audio{width:100%;margin-top:14px}
-
-/* ===== SLIDER ===== */
+/* slider */
 .slider{
-  height:340px;
-  border-radius:20px;
-  overflow:hidden;
   position:relative;
+  height:340px;
+  overflow:hidden;
+  border-radius:20px;
   box-shadow:0 14px 26px rgba(255,92,34,.3);
 }
 .slide{
@@ -136,462 +112,123 @@ audio{width:100%;margin-top:14px}
 }
 .slide.active{opacity:1}
 
-/* ===== LETTER ===== */
-.envelope{
-  background:#FFDDE1;
-  padding:22px;
-  border-radius:18px;
-  cursor:pointer;
-}
-.letter{
-  display:none;
+/* card section */
+.cardItem{
   background:#fff;
-  padding:22px;
-  border-radius:16px;
-  margin-top:18px;
-  font-size:1.3rem;
-  line-height:1.8;
-}
-
-/* ===== SCRAPBOOK ===== */
-.note-card{
-  background:#fff;
-  padding:18px;
-  border-radius:18px;
-  margin:26px auto;
-  box-shadow:0 12px 24px rgba(0,0,0,.15);
-  max-width:320px;
-}
-.note-img{
-  width:130px;height:130px;
-  border-radius:16px;
-  margin-bottom:12px;
-}
-.tilt-left{transform:rotate(-2deg)}
-.tilt-right{transform:rotate(2deg)}
-
-#finalNote{
-  font-size:1.9rem;
-  line-height:2.1;
-  color:#7A2E2E;
-}
-
-/* ===== FIREWORK CANVAS ===== */
-#fireworks{
-  position:fixed;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes popIn{
-  to{opacity:1;transform:scale(1)}
-}
-</style>
-</head>
-
-<body>
-
-<!-- INTRO -->
-<div id="intro">
-  <div id="introText">🎆 Happy New Year 🎆</div>
-</div>
-
-<div class="hearts"></div>
-<canvas id="fireworks"></canvas>
-
-<main>
-
-<section id="landing" class="active center">
-  <h1>Hey Bubu 💜</h1>
-  <p>Before this year ends… 🌙</p>
-  <div class="card">I made this only for you 🤍</div>
-  <button onclick="go('feelings')">Continue →</button>
-</section>
-
-<section id="feelings" class="center">
-  <div class="smiley">😊</div>
-  <h3>What are you feeling right now?</h3>
-  <button class="choiceBtn" onclick="choose('Hey… I’m right here 🤍')">A little upset 😔</button>
-  <button class="choiceBtn" onclick="choose('I miss you too 🌙')">I miss you 🫂</button>
-  <button class="choiceBtn" onclick="choose('Even silently, you feel close ❤️')">Just reading 📖</button>
-  <div id="choiceDesc" class="desc">Choose one 💗</div>
-  <button onclick="go('songs')">Next →</button>
-</section>
-
-<section id="songs" class="center">
-  <h2>🎵 Until I Found You</h2>
-  <audio controls src="song.mp3"></audio>
-  <button onclick="go('photos')">Next →</button>
-</section>
-
-<section id="photos" class="center">
-  <div class="slider">
-    <img src="photo1.jpg" class="slide active">
-    <img src="photo2.jpg" class="slide">
-    <img src="photo3.jpg" class="slide">
-  </div>
-  <button onclick="go('letter')">Next →</button>
-</section>
-
-<section id="letter" class="center">
-  <div class="envelope" onclick="openLetter()">✉️ Tap to open letter</div>
-  <div class="letter" id="letterBox">
-    Every word here is written slowly…<br><br>
-    I choose you, again and again 🌙<br><br>
-    <b>from your kobi ❤️</b>
-  </div>
-  <button onclick="go('cards')">Next →</button>
-</section>
-
-<section id="cards" class="center">
-  <div class="note-card tilt-left">
-    <img src="card1.gif" class="note-img">
-    <p>No bad intentions, just bad timing.</p>
-  </div>
-  <div class="note-card tilt-right">
-    <img src="card2.gif" class="note-img">
-    <p>You’re still my favorite person.</p>
-  </div>
-  <div class="note-card tilt-left">
-    <img src="card3.gif" class="note-img">
-    <p>This is us 🤍</p>
-  </div>
-  <button onclick="go('final')">Next →</button>
-</section>
-
-<section id="final" class="center">
-  <div id="finalNote">🎆 Happy New Year, my forever 🎆</div>
-  <button class="secondary" onclick="location.reload()">Restart ↺</button>
-</section>
-
-</main>
-
-<script>
-/* INTRO CONTROL */
-setTimeout(()=>{
-  document.getElementById('intro').style.display='none';
-  burstFirework();
-},4200);
-
-/* HEARTS */
-const hearts=document.querySelector('.hearts');
-setInterval(()=>{
-  const s=document.createElement('span');
-  s.innerText='💗';
-  s.style.left=Math.random()*100+'vw';
-  s.style.animationDuration=5+Math.random()*5+'s';
-  hearts.appendChild(s);
-  setTimeout(()=>s.remove(),10000);
-},400);
-
-/* NAV */
-function go(id){
-  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  if(id==='feelings')setTimeout(()=>document.querySelector('.smiley').classList.add('show'),200);
-}
-function choose(t){choiceDesc.innerText=t}
-function openLetter(){letterBox.style.display='block'}
-
-/* SLIDER */
-let i=0,slides=document.querySelectorAll('.slide');
-setInterval(()=>{
-  slides[i].classList.remove('active');
-  i=(i+1)%slides.length;
-  slides[i].classList.add('active');
-},3000);
-
-/* FIREWORKS */
-const c=document.getElementById('fireworks'),ctx=c.getContext('2d');
-function resize(){c.width=innerWidth;c.height=innerHeight}
-resize();addEventListener('resize',resize);
-let p=[];
-function burstFirework(){
-  for(let j=0;j<6;j++){
-    setTimeout(()=>{
-      for(let i=0;i<60;i++){
-        p.push({
-          x:Math.random()*c.width,
-          y:Math.random()*c.height/2,
-          vx:(Math.random()-.5)*6,
-          vy:(Math.random()-.5)*6,
-          l:50,
-          c:`hsl(${Math.random()*360},100%,60%)`
-        });
-      }
-    },j*250);
-  }
-  setTimeout(()=>p=[],2500);
-}
-(function anim(){
-  ctx.clearRect(0,0,c.width,c.height);
-  p.forEach((e,i)=>{
-    e.x+=e.vx;e.y+=e.vy;e.l--;
-    ctx.fillStyle=e.c;ctx.fillRect(e.x,e.y,2,2);
-    if(e.l<=0)p.splice(i,1);
-  });
-  requestAnimationFrame(anim);
-})();
-</script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>For Bubu 💖</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Poppins&display=swap');
-
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  background:#FFF3F6;
-  color:#5A3B2E;
-  overflow-x:hidden;
-}
-
-/* ===== INTRO OVERLAY ===== */
-#intro{
-  position:fixed;
-  inset:0;
-  background:#fff0f5;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-}
-
-#introText{
-  font-family:'Patrick Hand',cursive;
-  font-size:3rem;
-  color:#FF6B81;
-  opacity:0;
-  animation:introText 4s ease forwards;
-}
-
-@keyframes introText{
-  0%{opacity:0;transform:scale(.8)}
-  25%{opacity:1;transform:scale(1)}
-  60%{opacity:1}
-  100%{opacity:0;transform:scale(1.1)}
-}
-
-/* ===== HEART BACKGROUND ===== */
-.hearts span{
-  position:fixed;
-  bottom:-20px;
-  font-size:18px;
-  animation:floatUp linear infinite;
-  opacity:.6;
-}
-@keyframes floatUp{
-  to{transform:translateY(-120vh);opacity:0}
-}
-
-/* ===== LAYOUT ===== */
-main{
-  max-width:480px;
-  margin:auto;
-  padding:20px;
-  position:relative;
-  z-index:2;
-}
-
-section{display:none;animation:fadeIn .8s ease forwards}
-section.active{display:block}
-.center{text-align:center}
-
-button{
-  background:#FF6B81;
-  border:none;
-  border-radius:40px;
-  color:#fff;
-  padding:12px 30px;
-  font-size:1.05rem;
-  cursor:pointer;
-  box-shadow:0 6px 14px rgba(255,107,129,.45);
-}
-button.secondary{background:#69A197}
-
-.card{
-  background:#FFE6EC;
   border-radius:18px;
   padding:16px;
-  margin:18px 0;
+  margin:22px 0;
+  box-shadow:0 10px 22px rgba(255,120,160,.35);
 }
-
-h1,h2,h3,h4{font-family:'Patrick Hand',cursive}
-
-/* ===== SMILEY ===== */
-.smiley{
-  font-size:3rem;
-  opacity:0;
-  transform:scale(0);
-}
-.smiley.show{animation:popIn 1s ease forwards}
-
-/* ===== CHOICE ===== */
-.choiceBtn{
-  background:#FFDDE1;
-  border-radius:14px;
-  font-family:'Patrick Hand',cursive;
-  font-size:1.2rem;
-  padding:14px;
-  border:none;
-  margin:8px 0;
-}
-.desc{
-  background:#E3F6F5;
-  border-radius:12px;
-  padding:12px;
-  margin:14px 0;
-}
-
-audio{width:100%;margin-top:14px}
-
-/* ===== SLIDER ===== */
-.slider{
-  height:340px;
-  border-radius:20px;
-  overflow:hidden;
-  position:relative;
-  box-shadow:0 14px 26px rgba(255,92,34,.3);
-}
-.slide{
-  position:absolute;
-  inset:0;
+.cardImg{
   width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:0;
-  transition:opacity 1.5s;
+  border-radius:16px;
 }
-.slide.active{opacity:1}
+.cardQuote{
+  font-family:'Patrick Hand',cursive;
+  font-size:1.25rem;
+  margin-top:12px;
+  color:#7A2E2E;
+  line-height:1.6;
+}
 
-/* ===== LETTER ===== */
+/* letter */
 .envelope{
   background:#FFDDE1;
-  padding:22px;
+  padding:20px;
   border-radius:18px;
+  font-family:'Patrick Hand',cursive;
+  font-size:1.4rem;
   cursor:pointer;
 }
 .letter{
   display:none;
-  background:#fff;
-  padding:22px;
-  border-radius:16px;
   margin-top:18px;
-  font-size:1.3rem;
-  line-height:1.8;
-}
-
-/* ===== SCRAPBOOK ===== */
-.note-card{
   background:#fff;
-  padding:18px;
-  border-radius:18px;
-  margin:26px auto;
-  box-shadow:0 12px 24px rgba(0,0,0,.15);
-  max-width:320px;
-}
-.note-img{
-  width:130px;height:130px;
   border-radius:16px;
-  margin-bottom:12px;
+  padding:20px;
+  font-family:'Patrick Hand',cursive;
+  font-size:1.35rem;
+  line-height:1.8;
+  color:#8B4242;
 }
-.tilt-left{transform:rotate(-2deg)}
-.tilt-right{transform:rotate(2deg)}
 
+/* final */
 #finalNote{
+  font-family:'Patrick Hand',cursive;
   font-size:1.9rem;
   line-height:2.1;
   color:#7A2E2E;
 }
 
-/* ===== FIREWORK CANVAS ===== */
+/* fireworks */
 #fireworks{
   position:fixed;
   inset:0;
-  z-index:1;
   pointer-events:none;
 }
+#fireworks.fadeOut{animation:fwFade 1.5s forwards}
 
-/* ===== ANIMATIONS ===== */
+/* animations */
 @keyframes fadeIn{
-  from{opacity:0;transform:translateY(30px)}
+  from{opacity:0;transform:translateY(25px)}
   to{opacity:1;transform:translateY(0)}
 }
 @keyframes popIn{
-  to{opacity:1;transform:scale(1)}
+  0%{transform:scale(0)}
+  70%{transform:scale(1.2)}
+  100%{transform:scale(1);opacity:1}
 }
+@keyframes fwFade{to{opacity:0}}
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<div id="intro">
-  <div id="introText">🎆 Happy New Year 🎆</div>
-</div>
-
-<div class="hearts"></div>
 <canvas id="fireworks"></canvas>
 
 <main>
 
-<section id="landing" class="active center">
+<!-- LANDING -->
+<section id="landing" class="center">
   <h1>Hey Bubu 💜</h1>
   <p>Before this year ends… 🌙</p>
-  <div class="card">I made this only for you 🤍</div>
-  <button onclick="go('feelings')">Continue →</button>
+  <div class="cardBox">I made this only for you 🤍</div>
+  <button id="btnContinue">Continue →</button>
 </section>
 
+<!-- FEELINGS -->
 <section id="feelings" class="center">
   <div class="smiley">😊</div>
-  <h3>What are you feeling right now?</h3>
-  <button class="choiceBtn" onclick="choose('Hey… I’m right here 🤍')">A little upset 😔</button>
-  <button class="choiceBtn" onclick="choose('I miss you too 🌙')">I miss you 🫂</button>
-  <button class="choiceBtn" onclick="choose('Even silently, you feel close ❤️')">Just reading 📖</button>
+  <h3>What are you feeling right now? 💭</h3>
+
+  <button class="choiceBtn" data-desc="I’m right here, always 🤍">A little upset 😔</button>
+  <button class="choiceBtn" data-desc="I miss you more than words 🌙">I miss you 🫂</button>
+  <button class="choiceBtn" data-desc="Even silence feels warm ❤️">Just reading 📖</button>
+
   <div id="choiceDesc" class="desc">Choose one 💗</div>
-  <button onclick="go('songs')">Next →</button>
+  <button id="btnNextFeeling" disabled>Next →</button>
 </section>
 
+<!-- SONG -->
 <section id="songs" class="center">
   <h2>🎵 Until I Found You</h2>
-  <audio controls src="song.mp3"></audio>
-  <button onclick="go('photos')">Next →</button>
+  <audio controls><source src="song.mp3"></audio>
+  <button id="btnNextSongs">Next →</button>
 </section>
 
-<section id="photos" class="center">
+<!-- PHOTOS -->
+<section id="photoSection" class="center">
   <div class="slider">
     <img src="photo1.jpg" class="slide active">
     <img src="photo2.jpg" class="slide">
     <img src="photo3.jpg" class="slide">
   </div>
-  <button onclick="go('letter')">Next →</button>
+  <p>Some moments don’t fade… they stay 🌸</p>
+  <button id="btnNextPhoto">Next →</button>
 </section>
 
-<section id="letter" class="center">
-  <div class="envelope" onclick="openLetter()">✉️ Tap to open letter</div>
-  <div class="letter" id="letterBox">
-    Every word here is written slowly…<br><br>
-    I choose you, again and again 🌙<br><br>
-    <b>from your kobi ❤️</b>
-  </div>
-  <button onclick="go('cards')">Next →</button>
-</section>
-
+<!-- CARD SECTION -->
 <section id="cardSection" class="center">
   <h2>For You 💕</h2>
 
@@ -625,79 +262,116 @@ audio{width:100%;margin-top:14px}
   <button id="btnNextCard">Next →</button>
 </section>
 
-<section id="final" class="center">
-  <div id="finalNote">🎆 Happy New Year, my forever 🎆</div>
+<!-- LETTER -->
+<section id="letterSection" class="center">
+  <div class="envelope" id="openLetter">✉️ Tap to open the letter</div>
+  <div class="letter" id="letterBox">
+    Another year begins…<br>
+    and my heart still chooses you 🤍<br><br>
+    Not loudly, not perfectly—<br>
+    but honestly, steadily, endlessly 🌙<br><br>
+    <b>from your kobi ❤️</b>
+  </div>
+  <button id="btnNextLetter">Next →</button>
+</section>
+
+<!-- FINAL -->
+<section id="finalNoteSect" class="center">
+  <div id="finalNote">
+    🎆 <b>Happy New Year, my forever</b> 🎆
+  </div>
   <button class="secondary" onclick="location.reload()">Restart ↺</button>
 </section>
+
+<footer class="center">Made with love ✨ only for you</footer>
 
 </main>
 
 <script>
-/* INTRO CONTROL */
-setTimeout(()=>{
-  document.getElementById('intro').style.display='none';
-  burstFirework();
-},4200);
+const sections=document.querySelectorAll("section");
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
 
-/* HEARTS */
-const hearts=document.querySelector('.hearts');
-setInterval(()=>{
-  const s=document.createElement('span');
-  s.innerText='💗';
-  s.style.left=Math.random()*100+'vw';
-  s.style.animationDuration=5+Math.random()*5+'s';
-  hearts.appendChild(s);
-  setTimeout(()=>s.remove(),10000);
-},400);
-
-/* NAV */
-function go(id){
-  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  if(id==='feelings')setTimeout(()=>document.querySelector('.smiley').classList.add('show'),200);
+function show(s){
+  sections.forEach(x=>x.classList.remove("active"));
+  s.classList.add("active");
 }
-function choose(t){choiceDesc.innerText=t}
-function openLetter(){letterBox.style.display='block'}
 
-/* SLIDER */
-let i=0,slides=document.querySelectorAll('.slide');
+/* flow */
+btnContinue.onclick=()=>{
+  show(feelings);
+  setTimeout(()=>document.querySelector(".smiley").classList.add("show"),100);
+};
+document.querySelectorAll(".choiceBtn").forEach(b=>{
+  b.onclick=()=>{
+    choiceDesc.textContent=b.dataset.desc;
+    btnNextFeeling.disabled=false;
+  }
+});
+btnNextFeeling.onclick=()=>show(songs);
+btnNextSongs.onclick=()=>show(photoSection);
+btnNextPhoto.onclick=()=>show(cardSection);
+btnNextCard.onclick=()=>show(letterSection);
+btnNextLetter.onclick=()=>{
+  show(finalNoteSect);
+  startFireworks();
+};
+openLetter.onclick=()=>{
+  letterBox.style.display="block";
+  openLetter.style.display="none";
+};
+
+/* slider */
+let slides=document.querySelectorAll(".slide"),i=0;
 setInterval(()=>{
-  slides[i].classList.remove('active');
+  slides[i].classList.remove("active");
   i=(i+1)%slides.length;
-  slides[i].classList.add('active');
+  slides[i].classList.add("active");
 },3000);
 
-/* FIREWORKS */
-const c=document.getElementById('fireworks'),ctx=c.getContext('2d');
-function resize(){c.width=innerWidth;c.height=innerHeight}
-resize();addEventListener('resize',resize);
-let p=[];
-function burstFirework(){
-  for(let j=0;j<6;j++){
-    setTimeout(()=>{
-      for(let i=0;i<60;i++){
-        p.push({
-          x:Math.random()*c.width,
-          y:Math.random()*c.height/2,
-          vx:(Math.random()-.5)*6,
-          vy:(Math.random()-.5)*6,
-          l:50,
-          c:`hsl(${Math.random()*360},100%,60%)`
-        });
-      }
-    },j*250);
+/* fireworks */
+let particles=[],fw;
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
+resize();addEventListener("resize",resize);
+
+function startFireworks(){
+ fw=setInterval(()=>{
+  for(let i=0;i<25;i++){
+    particles.push({
+      x:Math.random()*canvas.width,
+      y:Math.random()*canvas.height/2,
+      vx:(Math.random()-.5)*6,
+      vy:(Math.random()-.5)*6,
+      l:40,
+      c:`hsl(${Math.random()*360},100%,60%)`
+    });
   }
-  setTimeout(()=>p=[],2500);
+ },900);
 }
-(function anim(){
-  ctx.clearRect(0,0,c.width,c.height);
-  p.forEach((e,i)=>{
-    e.x+=e.vx;e.y+=e.vy;e.l--;
-    ctx.fillStyle=e.c;ctx.fillRect(e.x,e.y,2,2);
-    if(e.l<=0)p.splice(i,1);
+function stopFireworks(){
+  canvas.classList.add("fadeOut");
+  setTimeout(()=>{
+    clearInterval(fw);
+    particles=[];
+    canvas.style.display="none";
+    show(landing);
+  },1500);
+}
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach((p,i)=>{
+    p.x+=p.vx;p.y+=p.vy;p.l--;
+    ctx.fillStyle=p.c;
+    ctx.fillRect(p.x,p.y,2,2);
+    if(p.l<=0)particles.splice(i,1);
   });
-  requestAnimationFrame(anim);
-})();
+  requestAnimationFrame(animate);
+}
+animate();
+
+/* first load firework */
+startFireworks();
+setTimeout(stopFireworks,3000);
 </script>
 
 </body>
