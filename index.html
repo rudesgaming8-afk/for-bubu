@@ -145,6 +145,7 @@ button.secondary{background:#69A197}
   display:none;
   margin-top:18px;
   background:#fff;
+;
   border-radius:16px;
   padding:20px;
   font-family:'Patrick Hand',cursive;
@@ -153,8 +154,7 @@ button.secondary{background:#69A197}
   color:#8B4242;
 }
 
-/* final */
-#finalNote{
+/* final *#finalNote{
   font-family:'Patrick Hand',cursive;
   font-size:1.9rem;
   line-height:2.1;
@@ -180,6 +180,24 @@ button.secondary{background:#69A197}
   100%{transform:scale(1);opacity:1}
 }
 @keyframes fwFade{to{opacity:0}}
+  /* New Year GIF style */
+.ny-gif{
+  width:140px;
+  margin:14px auto 18px;
+  display:block;
+  animation: fadePop 1.4s ease;
+}
+
+@keyframes fadePop{
+  from{
+    opacity:0;
+    transform:scale(0.85);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
 </style>
 </head>
 
@@ -278,6 +296,8 @@ button.secondary{background:#69A197}
 <!-- FINAL -->
 <section id="finalNoteSect" class="center">
   <div id="finalNote">
+    <img src="anime-fireworks.gif" 
+      class="ny-gif" alt="Anime fireworks couple">
     🎆 <b>Happy New Year, my forever</b> 🎆
   </div>
   <button class="secondary" onclick="location.reload()">Restart ↺</button>
