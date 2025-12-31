@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For Bubu 🌙</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Poppins&display=swap');
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#FFF9F0;
+  color:#5A3B2E;
+  overflow-x:hidden;
+}
+
+main{
+  max-width:480px;
+  margin:auto;
+  padding:20px;
+  position:relative;
+  z-index:2;
+}
+
+section{display:none;animation:fadeIn .7s ease forwards}
+section.active{display:block}
+.center{text-align:center}
+
+button{
+  background:#FF6B35;
+  border:none;
+  border-radius:40px;
+  color:#fff;
+  padding:12px 28px;
+  font-size:1.05rem;
+  cursor:pointer;
+  box-shadow:0 6px 14px rgba(255,107,53,.45);
+}
+button.secondary{background:#69A197}
+
+.card{
+  background:#D7EADF;
+  border-radius:18px;
+  padding:16px;
+  margin:18px 0;
+}
+
+#landing h1{
+  font-family:'Patrick Hand',cursive;
+  font-size:2.6rem;
+  color:#FF6B35;
+}
+
+/* 😊 Smiley */
+.smiley{
+  font-size:3rem;
+  margin-bottom:10px;
+  opacity:0;
+  transform:scale(0);
+}
+.smiley.show{animation:popIn 1s ease forwards}
+
+/* mood */
+.choiceBtn{
+  background:#FFDDE1;
+  border-radius:14px;
+  font-family:'Patrick Hand',cursive;
+  font-size:1.2rem;
+  padding:14px;
+  border:none;
+  margin:8px 0;
+}
+.desc{
+  background:#E3F6F5;
+  border-radius:12px;
+  padding:12px;
+  margin:14px 0;
+}
+
+audio{width:100%;margin-top:14px}
+
+/* slider */
+.slider{
+  position:relative;
+  width:100%;
+  height:340px;
+  overflow:hidden;
+  border-radius:20px;
+  box-shadow:0 14px 26px rgba(255,92,34,.3);
+}
+.slide{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 1.5s ease;
+}
+.slide.active{opacity:1}
+
+/* letter */
+.envelope{
+  background:#FFDDE1;
+  padding:22px;
+  border-radius:18px;
+  font-family:'Patrick Hand',cursive;
+  font-size:1.4rem;
+  cursor:pointer;
+}
+.letter{
+  display:none;
+  margin-top:20px;
+  background:#fff;
+  border-radius:16px;
+  padding:22px;
+  font-family:'Patrick Hand',cursive;
+  font-size:1.35rem;
+  line-height:1.8;
+  color:#8B4242;
+}
+
+/* final */
+#finalNote{
+  font-family:'Patrick Hand',cursive;
+  font-size:1.9rem;
+  line-height:2.1;
+  color:#7A2E2E;
+}
+
+/* fireworks */
+#fireworks{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+
+/* animations */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(25px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes popIn{
+  0%{transform:scale(0);opacity:0}
+  70%{transform:scale(1.2)}
+  100%{transform:scale(1);opacity:1}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<main>
+
+<section id="landing" class="active center">
+  <h1>Hey Bubu 💜</h1>
+  <p>Before this year ends… 🌙</p>
+  <div class="card">I made this only for you 🤍</div>
+  <button id="btnContinue">Continue →</button>
+</section>
+
+<section id="feelings" class="center">
+  <div class="smiley">😊</div>
+  <h3>What are you feeling right now? 💭</h3>
+
+  <button class="choiceBtn" data-desc="Hey… you look stunning today 😌🤍 I’m right here.">
+    A little upset 😔
+  </button>
+  <button class="choiceBtn" data-desc="I miss you more than I can say 🌙💫">
+    I miss you 🫂
+  </button>
+  <button class="choiceBtn" data-desc="Even silently, your presence feels warm ❤️">
+    Just reading 📖
+  </button>
+
+  <div id="choiceDesc" class="desc">Choose one 💗</div>
+  <button id="btnNextFeeling" disabled>Next →</button>
+</section>
+
+<section id="songs" class="center">
+  <h2>🎵 Until I Found You</h2>
+  <audio id="song" controls>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+  <button id="btnNextSongs">Next →</button>
+</section>
+
+<section id="photoSection" class="center">
+  <div class="slider">
+    <img src="photo1.jpg" class="slide active">
+    <img src="photo2.jpg" class="slide">
+    <img src="photo3.jpg" class="slide">
+  </div>
+  <p>Some moments don’t fade… they stay 🌸</p>
+  <button id="btnNextPhoto">Next →</button>
+</section>
+
+<section id="letterSection" class="center">
+  <div class="envelope" id="openLetter">✉️ Tap to open the letter</div>
+
+  <div class="letter" id="letterBox">
+    Every word here is written slowly,<br>
+    honestly, and only for you 🤍<br><br>
+    Some days I stay quiet,<br>
+    but every day — I choose you 🌙<br><br>
+    <b>from your kobi ❤️</b>
+  </div>
+
+  <button id="btnNextLetter">Next →</button>
+</section>
+
+<section id="finalNoteSect" class="center">
+  <div id="finalNote">
+    I don’t promise perfection 🌙<br>
+    I promise presence 🤍<br>
+    Effort 🫶<br>
+    And choosing you…<br>
+    in every tomorrow 💫<br><br>
+    🎆 <b>Happy New Year, my forever</b> 🎆
+  </div>
+
+  <button class="secondary" id="btnRestart">Restart ↺</button>
+</section>
+
+<footer class="center">
+  Made with love ✨ only for you
+</footer>
+
+</main>
+
+<script>
+const sections=document.querySelectorAll("section");
+const smiley=document.querySelector(".smiley");
+
+function show(s){
+  sections.forEach(x=>x.classList.remove("active"));
+  s.classList.add("active");
+}
+
+btnContinue.onclick=()=>{
+  stopFireworks();
+  show(feelings);
+  setTimeout(()=>smiley.classList.add("show"),100);
+};
+
+document.querySelectorAll(".choiceBtn").forEach(b=>{
+  b.onclick=()=>{
+    choiceDesc.textContent=b.dataset.desc;
+    btnNextFeeling.disabled=false;
+  }
+});
+
+btnNextFeeling.onclick=()=>show(songs);
+btnNextSongs.onclick=()=>show(photoSection);
+btnNextPhoto.onclick=()=>show(letterSection);
+btnNextLetter.onclick=()=>{
+  show(finalNoteSect);
+  startFireworks();
+  burstFireworks();
+};
+
+openLetter.onclick=()=>{
+  letterBox.style.display="block";
+  openLetter.style.display="none";
+};
+
+btnRestart.onclick=()=>{
+  stopFireworks();
+  letterBox.style.display="none";
+  openLetter.style.display="block";
+  smiley.classList.remove("show");
+  btnNextFeeling.disabled=true;
+  choiceDesc.textContent="Choose one 💗";
+  show(landing);
+  startFireworks();
+  burstFireworks();
+};
+
+/* slider */
+let slides=document.querySelectorAll(".slide"),i=0;
+setInterval(()=>{
+  slides[i].classList.remove("active");
+  i=(i+1)%slides.length;
+  slides[i].classList.add("active");
+},3000);
+
+/* fireworks */
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+let particles=[],fwInt;
+
+function resize(){
+  canvas.width=innerWidth;
+  canvas.height=innerHeight;
+}
+resize();addEventListener("resize",resize);
+
+function startFireworks(){
+  fwInt=setInterval(()=>{
+    for(let i=0;i<20;i++){
+      particles.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height/2,
+        vx:(Math.random()-.5)*5,
+        vy:(Math.random()-.5)*5,
+        life:40,
+        c:`hsl(${Math.random()*360},100%,60%)`
+      });
+    }
+  },1200);
+}
+
+function burstFireworks(){
+  for(let j=0;j<6;j++){
+    setTimeout(()=>{
+      for(let i=0;i<60;i++){
+        particles.push({
+          x:Math.random()*canvas.width,
+          y:Math.random()*canvas.height/2,
+          vx:(Math.random()-.5)*8,
+          vy:(Math.random()-.5)*8,
+          life:60,
+          c:`hsl(${Math.random()*360},100%,60%)`
+        });
+      }
+    },j*200);
+  }
+}
+
+function stopFireworks(){
+  clearInterval(fwInt);
+  particles=[];
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach((p,i)=>{
+    p.x+=p.vx;p.y+=p.vy;p.life--;
+    ctx.fillStyle=p.c;
+    ctx.fillRect(p.x,p.y,2,2);
+    if(p.life<=0)particles.splice(i,1);
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+
+/* FIRST LOAD FIREWORK */
+startFireworks();
+burstFireworks();
+</script>
+
+</body>
+</html>
